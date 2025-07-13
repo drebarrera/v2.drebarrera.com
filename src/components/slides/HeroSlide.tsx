@@ -1,4 +1,3 @@
-import BlobCenterpiece from "../BlobCenterpiece";
 import ToolCarousel from "../ToolCarousel";
 import SlideItem from "../library/scroll/SlideItem";
 import TypewriterCycleText from '../library/text/TypewriterCycleText';

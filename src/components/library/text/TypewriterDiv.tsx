@@ -13,12 +13,6 @@ export default function TypewriterDiv({ content, className, show=true, trigger, 
 
   }, [trigger]);
 
-  function nextItem(lastItem: any, index: number) {
-    if (index < content.length && content[index] == lastItem) {
-      setItemShown((prev) => prev + 1);
-    }
-  }
-
   useEffect(() => {
     if (!show || itemShown == -1) return;
 
