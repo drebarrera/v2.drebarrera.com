@@ -4,7 +4,24 @@ import { motion, useTransform } from 'framer-motion';
 import { useScrollProgress } from "../../../context/ScrollContext";
 import { useState, useEffect, type ReactNode } from 'react';
 
-export default function SlideItem({ show, duration, overrideVisible, className, children } : { show: number[], duration: number[], overrideVisible?: boolean, className?: string, children: ReactNode }) {
+type Position = "relative" | "absolute" | "fixed" | "sticky" | "static" | undefined;
+type MotionValueHelper<T> = T | any; // Replace 'any' with the actual type if available
+
+export default function SlideItem({
+  show,
+  duration,
+  overrideVisible,
+  className,
+  children,
+  position = 'relative',
+}: {
+  show: number[];
+  duration: number[];
+  overrideVisible?: boolean;
+  className?: string;
+  children?: ReactNode;
+  position?: MotionValueHelper<Position>;
+}) {
   const { smoothYProgress } = useScrollProgress();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -34,7 +51,7 @@ export default function SlideItem({ show, duration, overrideVisible, className, 
       style={{
         opacity,
         y: translateY,
-        position: "relative",
+        position,
         zIndex: 1,
       }}
       transition={{ duration: 0.8, ease: "easeInOut" }}

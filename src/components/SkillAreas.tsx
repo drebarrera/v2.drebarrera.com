@@ -8,13 +8,13 @@ export default function SkillAreas() {
   const [offset, setOffset] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [queueTransition, setQueueTransition] = useState(false);
-  const [itemWidth, setItemWidth] = useState(screenWidth >= 768 ? 275 : 175);
+  const [itemWidth, setItemWidth] = useState(screenWidth >= 768 ? 275 : 250);
   const intervalRef = useRef<number | null>(null);
   const totalItems = skills.length;
   const totalWidth = itemWidth * totalItems;
 
   useEffect(() => {
-    setItemWidth(screenWidth >= 768 ? 275 : 175);
+    setItemWidth(screenWidth >= 768 ? 275 : 250);
   }, [screenWidth]);
 
   useEffect(() => {
@@ -79,8 +79,8 @@ export default function SkillAreas() {
         >
         { 
           [...skills, ...skills].map((skill, index) => 
-            <div key={index} className="relative shrink-0 w-[275px] h-[400px] p-[20px] py-[40px] flex flex-col items-center border-r-1 border-r-[var(--theme-d)] gap-[30px]">
-              <div className="w-[175px] h-[175px] bg-[#eee] z-0">
+            <div key={index} className="relative shrink-0 w-[250px] h-[350px] md:w-[275px] md:h-[400px] p-[20px] md:py-[40px] flex flex-col items-center border-r-1 border-r-[var(--theme-d)] gap-[30px]">
+              <div className="w-[150px] h-[150px] md:w-[175px] md:h-[175px] bg-[#eee] z-0 shrink-0">
                 {skill.i ? React.cloneElement(skill.i, {play: Math.round(offset / itemWidth) == index}) : undefined}
               </div>
               <div className="flex flex-col gap-[5px] z-0">

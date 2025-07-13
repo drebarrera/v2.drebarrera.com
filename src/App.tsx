@@ -25,7 +25,7 @@ function App() {
       {(scrollYValue == null || scrollYValue < 0.15) && <HeroSlide />}
       {(scrollYValue != null && scrollYValue > 0.15 && scrollYValue < 0.5) && <AboutSlide />}
       {(scrollYValue != null && scrollYValue > 0.475 && scrollYValue < 0.95) && <AskMeAnythingSlide />}
-      {(scrollYValue != null && scrollYValue > 0.9) && <ContactSlide />}
+      {(scrollYValue != null && scrollYValue > 0.925) && <ContactSlide />}
     </div>
   );
 }
