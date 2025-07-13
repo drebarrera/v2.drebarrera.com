@@ -44,7 +44,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full sm:hidden fixed z-50 top-0 right-0 p-[10px] flex flex-col items-end gap-[10px]">
+      <menu className="w-full sm:hidden fixed z-50 top-0 right-0 p-[10px] flex flex-col items-end gap-[10px]">
         <div className="p-[5px] w-[45px] h-[45px]" onClick={() => setToggleHeight((prev) => prev ? 0 : 220)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="var(--theme-6)"><path d="M120-680v-80h720v80H120Zm0 480v-80h720v80H120Zm0-240v-80h720v80H120Z"/></svg>
         </div>
@@ -75,8 +75,8 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </header>
-      <menu className="hidden fixed top-0 left-0 w-full sm:flex flex-row gap-[25px] p-[25px] justify-end items-center z-50">
+      </menu>
+      <header className="hidden fixed top-0 left-0 w-full sm:flex flex-row gap-[25px] p-[25px] justify-end items-center z-50 bg-[var(--theme-e)]">
         {
           LINKS.map((link, index) => (
             link.href ? 
@@ -84,7 +84,7 @@ export default function Header() {
               <button key={index} onClick={link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-lg">{link.icon}{link.label}</button>
           ))
         }
-      </menu>
+      </header>
     </>
   )
 }
