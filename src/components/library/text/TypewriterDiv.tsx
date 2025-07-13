@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import TypewriterText from "./TypewriterText";
 
-export default function TypewriterDiv({ content, className, show=true, trigger, timeout, step, onFinish }: { content: {node: ReactNode | string, className?: string, timeout?: number, spaceLatency?: number, onClick?: Function, step?: number}[], className?: string, show?: boolean, trigger: boolean, timeout?: number, step: number, onFinish?: Function }) {
+export default function TypewriterDiv({ content, className, show=true, trigger, timeout, step, onFinish }: { content: {node: ReactNode | string, className?: string, timeout?: number, spaceLatency?: number, onClick?: Function, step?: number}[], className?: string, show?: boolean, trigger: any, timeout?: number, step: number, onFinish?: Function }) {
   const [itemShown, setItemShown] = useState<number>(-1);
 
   useEffect(() => {
@@ -12,6 +12,12 @@ export default function TypewriterDiv({ content, className, show=true, trigger, 
     }, timeout || 0);
 
   }, [trigger]);
+
+  function nextItem(lastItem: any, index: number) {
+    if (index < content.length && content[index] == lastItem) {
+      setItemShown((prev) => prev + 1);
+    }
+  }
 
   useEffect(() => {
     if (!show || itemShown == -1) return;

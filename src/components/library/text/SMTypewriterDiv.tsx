@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
 import TypewriterDiv from "./TypewriterDiv";
 
+/* State Managed Typewriter Div */
 export default function SMTypewriterDiv({ triggerNode, content, className, show=true, timeout, step, onFinish }: { triggerNode?: ReactNode, content: {node: ReactNode | string, className?: string, timeout?: number, spaceLatency?: number, onClick?: Function, step?: number}[], className: string, show?: boolean, timeout?: number, step: number, onFinish?: Function }) {
   const [showContent, setShowContent] = useState<boolean>(false);
 

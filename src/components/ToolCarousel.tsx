@@ -71,7 +71,7 @@ export default function ToolCarousel() {
         }}
       />
       <div 
-        className="w-[500px] h-fit flex flex-row gap-[35px] md:gap-[75px] overflow-visible"
+        className="w-0 h-fit flex flex-row gap-[35px] md:gap-[75px] overflow-visible"
         style={{
           transform: `translateX(-${offset}px)` ,
           transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none',

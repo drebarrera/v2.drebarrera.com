@@ -1,41 +1,79 @@
-import { useState } from "react";
-import TypewriterText from "./library/text/TypewriterText";
+import { useEffect, useMemo, useState } from "react";
 import AutoGrowTextarea from "./AutoGrowTextarea";
+import TypewriterDiv from "./library/text/TypewriterDiv";
 
 export default function DreGPT() {
+  const [show, setShow] = useState<boolean>(false);
   const [gptInput, setGptInput] = useState<string>('');
-  
-  async function invokeDre() {
-    const response = await fetch('/api/invokeDre', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: gptInput }),
-    });
+  const [gptResponse, setGptResponse] = useState<string>("Hi, I'm DreGPT - An AI agent equipped with Mistral 7B and FAISS vector store for searching anything and everything about Andrés. How may I help you today?");
+  const [gptSources, setGptSources] = useState<string[]>([]);
 
-    const body = await response.json();
-    if (response.status != 200) {
-      console.log(body);
+  const gptResponseMemo = useMemo(() => [
+    { node: gptResponse, className: "w-full" },
+    ...gptSources.map((source) => ({
+      node: source,
+      className: "font-light text-xl text-[var(--accent-6)] hover:underline underline-offset-2 cursor-pointer",
+      onClick: () => window.open(source, '_blank')
+    }))
+  ], [gptResponse, gptSources]);
+
+  useEffect(() => {
+    console.log('checking');
+    fetch('/api/testDre', { method: 'GET' }).then((response) => {
+      console.log('fetched', response.status);
+      if (response.status == 200) {
+        setShow(true);
+      } else {
+        setShow(false);
+        console.error('DreGPT Test Status:', response.status);
+      }
+    });
+  }, [])
+
+  useEffect(() => {
+    console.log(gptResponseMemo);
+  }, [gptResponseMemo]) 
+
+  async function invokeDre() {
+    const input = gptInput;
+    setGptInput('');
+    setGptResponse('Loading DreGPT...');
+    
+    try {
+      const response = await fetch('/api/invokeDre', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: input }),
+      });
+
+      const body = await response.json();
+      if (response.status != 200) {
+        setGptResponse('DreGPT is currently down for maintenence. For more information about Andrés and his professional experience, please visit the below link.')
+        console.log(body);
+      }
+    } catch (e) {
+      setGptResponse('DreGPT is currently down for maintenence. For more information about Andrés and his professional experience, please visit the below link.')
+      setGptSources(['https://www.drebarrera.com'])
+      console.error('DreGPT Error:', e);
     }
   }
 
   return (
-    <div 
-    className="w-full max-h-[calc(100vh - 100px)] p-[15px] bg-[rgba(var(--theme-f-rgb),0.5)] flex flex-col gap-[20px]"
+    show && <div 
+    className="w-full max-h-[calc(100vh - 100px)] ml-[40px] p-[15px] bg-[var(--theme-f)] flex flex-col gap-[20px] border-1 border-[var(--theme-c)]"
     style={{
       borderRadius: "25px",
       transition: "height 0.5s linear"
     }}
     >
-      <TypewriterText 
-        className="font-light text-2xl text-[var(--theme-2)]"
-        trigger={true}
+      <TypewriterDiv 
+        className="font-light text-2xl text-[var(--theme-2)] flex flex-row gap-x-[10px] gap-y-[10px] flex-wrap"
+        trigger={gptResponseMemo}
         step={25}
-      >
-        Hi, I'm DreGPT - A customized LLM trained for searching anything and everything about Andrés. How may I help you today?
-      </TypewriterText>
+        content={gptResponseMemo}
+      />
       <div className="py-[5px] px-[15px]">
       </div>
-
       <div className="w-full flex flex-row gap-[8px] items-end">
         <AutoGrowTextarea
           className="w-full px-[10px] py-[4px] bg-[var(--theme-e)] rounded-lg text-lg resize-none"

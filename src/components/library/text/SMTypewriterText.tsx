@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react"
 
+/* State Managed Typewriter Text */
 export default function SMTypewriterText({ children, className, show=true, triggerNode, timeout, step, onFinish, spaceLatency, onClick } : { children: string, className: string, show?: boolean, triggerNode?: ReactNode, timeout?: number, step: number, onFinish?: Function, spaceLatency?: number, onClick?: Function }) {
   const [showContent, setShowContent] = useState<boolean>(false);
   const [charShown, setCharShown] = useState<number>(0);

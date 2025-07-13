@@ -18,7 +18,7 @@ export default function Header() {
       href: 'https://calendly.com/drebarrera/chat'
     },
     {
-      icon: <svg className="w-[36px] h-[36px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm1.102 4.297a1.195 1.195 0 1 0 0-2.39 1.195 1.195 0 0 0 0 2.39m1 7.516V6.234h-2v6.579zM6.43 6.234h2v.881c.295-.462.943-1.084 2.148-1.084 1.438 0 2.219.953 2.219 2.766 0 .087.008.484.008.484v3.531h-2v-3.53c0-.485-.102-1.438-1.18-1.438-1.079 0-1.17 1.198-1.195 1.982v2.986h-2z"/></svg>,
+      icon: <svg className="w-[36px] h-[36px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M3 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm1.102 4.297a1.195 1.195 0 1 0 0-2.39 1.195 1.195 0 0 0 0 2.39m1 7.516V6.234h-2v6.579zM6.43 6.234h2v.881c.295-.462.943-1.084 2.148-1.084 1.438 0 2.219.953 2.219 2.766 0 .087.008.484.008.484v3.531h-2v-3.53c0-.485-.102-1.438-1.18-1.438-1.079 0-1.17 1.198-1.195 1.982v2.986h-2z"/></svg>,
       href: 'https://www.linkedin.com/in/drebarrera/'
     },
     {
@@ -44,7 +44,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="w-full sm:hidden fixed top-0 right-0 p-[10px] flex flex-col items-end gap-[10px]">
+      <header className="w-full sm:hidden fixed z-50 top-0 right-0 p-[10px] flex flex-col items-end gap-[10px]">
         <div className="p-[5px] w-[45px] h-[45px]" onClick={() => setToggleHeight((prev) => prev ? 0 : 220)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="var(--theme-6)"><path d="M120-680v-80h720v80H120Zm0 480v-80h720v80H120Zm0-240v-80h720v80H120Z"/></svg>
         </div>
@@ -75,8 +75,8 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="hidden fixed top-0 left-0 w-full sm:flex flex-row gap-[25px] p-[25px] justify-end items-center">
+      </header>
+      <menu className="hidden fixed top-0 left-0 w-full sm:flex flex-row gap-[25px] p-[25px] justify-end items-center z-50">
         {
           LINKS.map((link, index) => (
             link.href ? 
@@ -84,7 +84,7 @@ export default function Header() {
               <button key={index} onClick={link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-lg">{link.icon}{link.label}</button>
           ))
         }
-      </div>
+      </menu>
     </>
   )
 }
