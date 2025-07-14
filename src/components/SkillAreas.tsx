@@ -98,10 +98,10 @@ export default function SkillAreas() {
           }}
         />
         <div 
-          className="absolute w-[50px] h-[50px] right-0 mr-[10px] bg-[var(--theme-f)] z-20 border-1 border-[var(--theme-c)] p-[8px] cursor-pointer"
+          className="absolute w-[50px] h-[50px] right-0 mr-[10px] bg-[#fff] z-20 border-1 border-[#ccc] p-[8px] cursor-pointer"
           onClick={() => nextSkill()}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="var(--theme-2)"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#222"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56z"/></svg>
         </div>
       </div>
     </div>

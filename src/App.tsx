@@ -8,12 +8,24 @@ import AskMeAnythingSlide from './components/slides/AskMeAnythingSlide';
 import ContactSlide from './components/slides/ContactSlide';
 import { useScrollProgress } from './context/ScrollContext';
 import BlobSlide from './components/slides/BlobSlide';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const N_SLIDES = 4;
 
 function App() {
   const {screenHeight} = useScreen();
   const {scrollYValue} = useScrollProgress();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      window.location.replace(`https://docs.drebarrera.com${location.pathname}`);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   return (
     <div 

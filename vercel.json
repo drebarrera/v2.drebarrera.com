@@ -1,9 +1,3 @@
 {
-  "redirects": [
-    {
-      "source": "/:path+",
-      "destination": "https://docs.drebarrera.com/:path+",
-      "permanent": true
-    }
-  ]
+  "cleanUrls": true
 }
