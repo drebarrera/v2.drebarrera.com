@@ -60,19 +60,15 @@ export default function Header() {
         >
           <div className="w-full h-full p-[15px] overflow-clip flex flex-col gap-[10px] items-center">
             {
-              LINKS.filter(x => x.label).map((link, index) => (
-                link.href ? 
-                  <a key={index} href={link.href} target="_blank" onClick={link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-3xl">{link.icon}{link.label}</a> :
-                  <button key={index} onClick={link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-3xl">{link.icon}{link.label}</button>
-              ))
+              LINKS.filter(x => x.label).map((link, index) => 
+                <button key={index} onClick={link.href ? () => window.open(link.href, '_blank') : link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-lg">{link.icon}{link.label}</button>
+              )
             }
             <div className="w-full h-fit flex flex-row flex-wrap gap-[10px] mt-[10px] items-center justify-center">
               {
-                LINKS.filter(x => x.icon && !x.label).map((link, index) => (
-                  link.href ? 
-                    <a key={index} href={link.href} target="_blank" onClick={link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-2xl">{link.icon}{link.label}</a> :
-                    <button key={index} onClick={link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-2xl">{link.icon}{link.label}</button>
-                ))
+                LINKS.filter(x => x.icon && !x.label).map((link, index) => 
+                  <button key={index} onClick={link.href ? () => window.open(link.href, '_blank') : link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-lg">{link.icon}{link.label}</button>
+                )
               }
             </div>
           </div>
@@ -81,7 +77,6 @@ export default function Header() {
       <header className="hidden fixed top-0 left-0 w-full sm:flex flex-row gap-[25px] p-[25px] justify-end items-center z-50 bg-[var(--theme-e)]">
         {
           LINKS.map((link, index) => (
-            
               <button key={index} onClick={link.href ? () => window.open(link.href, '_blank') : link.onClick} className="text-[var(--theme-4)] hover:text-[var(--accent-6)] fill-[var(--theme-4)] hover:fill-[var(--accent-6)] cursor-pointer flex flex-row gap-[10px] items-center text-lg">{link.icon}{link.label}</button>
           ))
         }
