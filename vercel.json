@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/work",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://docs.drebarrera.com/$1",
+      "permanent": true
+    }
+  ]
+} 
