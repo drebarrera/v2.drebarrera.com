@@ -14,7 +14,7 @@ export function ScrollProvider({ children }: { children: ReactNode | null }) {
   const [scrollYValue, setScrollYValue] = useState<number | null>(0);
 
   useEffect(() => {
-    console.log('sv', scrollYValue, 'sp', scrollYProgress)
+    console.log('sv', scrollYValue, 'sp', scrollYProgress.get(), 'sv', smoothYProgress.get())
   }, [scrollYValue, scrollYProgress]);
 
   const smoothYProgress = useSpring(scrollYProgress, {
