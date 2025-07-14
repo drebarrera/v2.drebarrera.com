@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { useScroll, useSpring, useMotionValueEvent } from "framer-motion";
 import type { ScrollContextType } from "./types";
 
@@ -12,6 +12,10 @@ export function ScrollProvider({ children }: { children: ReactNode | null }) {
   });
 
   const [scrollYValue, setScrollYValue] = useState<number | null>(0);
+
+  useEffect(() => {
+    console.log('sv', scrollYValue, 'sp', scrollYProgress)
+  }, [scrollYValue, scrollYProgress]);
 
   const smoothYProgress = useSpring(scrollYProgress, {
     stiffness: 100,
