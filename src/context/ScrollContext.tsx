@@ -11,7 +11,7 @@ export function ScrollProvider({ children }: { children: ReactNode | null }) {
     offset: ["start start", "end end"]
   });
 
-  const [scrollYValue, setScrollYValue] = useState<number | null>(null);
+  const [scrollYValue, setScrollYValue] = useState<number | null>(0);
 
   const smoothYProgress = useSpring(scrollYProgress, {
     stiffness: 100,
