@@ -1,15 +1,18 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { useScroll, useSpring, useMotionValueEvent } from "framer-motion";
+import { useScroll, useSpring, useMotionValueEvent, useMotionValue } from "framer-motion";
 import type { ScrollContextType } from "./types";
 
 const ScrollContext = createContext<ScrollContextType>({} as ScrollContextType);
 
 export function ScrollProvider({ children }: { children: ReactNode | null }) {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  const motionValue0 = useMotionValue(0);
+
+  const { scrollYProgress } = containerRef.current ? 
+    useScroll({
+      target: containerRef,
+      offset: ["start start", "end end"]
+    }) : { scrollYProgress: motionValue0 };
 
   const [scrollYValue, setScrollYValue] = useState<number | null>(0);
 
@@ -18,10 +21,10 @@ export function ScrollProvider({ children }: { children: ReactNode | null }) {
   }, [scrollYValue, scrollYProgress]);
 
   const smoothYProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 20,
-    mass: 0.5,
-  });
+      stiffness: 100,
+      damping: 20,
+      mass: 0.5,
+    });
 
   useMotionValueEvent(smoothYProgress, "change", (latest: number) => {
     setScrollYValue(latest);
