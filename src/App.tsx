@@ -25,6 +25,7 @@ function App() {
     } else {
       setTimeout(() => {
         window.scrollTo(0, 0);
+        console.log('window.scrollTo');
       }, 100)
     }
   }, [location]);

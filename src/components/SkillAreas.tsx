@@ -47,7 +47,6 @@ export default function SkillAreas() {
   }, [queueTransition]);
 
   function nextSkill() {
-    console.log('next clicked');
     setOffset(prev => {
       if (prev + itemWidth >= totalWidth) {
         setQueueTransition(true);

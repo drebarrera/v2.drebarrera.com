@@ -18,9 +18,7 @@ export default function DreGPT() {
   ], [gptResponse, gptSources]);
 
   useEffect(() => {
-    console.log('checking');
     fetch('/api/testDre', { method: 'GET' }).then((response) => {
-      console.log('fetched', response.status);
       if (response.status == 200) {
         setShow(true);
       } else {
@@ -30,9 +28,9 @@ export default function DreGPT() {
     });
   }, [])
 
-  useEffect(() => {
+  /*useEffect(() => {
     console.log(gptResponseMemo);
-  }, [gptResponseMemo]) 
+  }, [gptResponseMemo]) */
 
   async function invokeDre() {
     const input = gptInput;
@@ -49,7 +47,7 @@ export default function DreGPT() {
       const body = await response.json();
       if (response.status != 200) {
         setGptResponse('DreGPT is currently down for maintenence. For more information about Andrés and his professional experience, please visit the below link.')
-        console.log(body);
+        //console.log(body);
       }
     } catch (e) {
       setGptResponse('DreGPT is currently down for maintenence. For more information about Andrés and his professional experience, please visit the below link.')
