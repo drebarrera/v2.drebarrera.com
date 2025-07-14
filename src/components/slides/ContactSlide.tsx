@@ -3,11 +3,10 @@ import SlideItem from "../library/scroll/SlideItem";
 
 
 export default function ContactSlide() {
-
   return (
     <section className="fixed w-screen h-screen max-w-[1400px] flex flex-row md:flex-row items-center md:items-end 2xl:items-center gap-[10px] md:gap-[50px] p-[20px]">
       <div className="hidden md:flex w-[225px] h-[225px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] m-[30px] shrink-0"></div>
-      <div className="w-full h-full flex flex-col gap-[40px] overflow-y-auto">
+      <div className="w-full h-full flex flex-col gap-[40px] overflow-y-auto justify-center">
         <SlideItem
           show={[0.925, 1.1]}
           duration={[0.04, 0]}

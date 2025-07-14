@@ -26,6 +26,12 @@ function App() {
       {(scrollYValue != null && scrollYValue > 0.15 && scrollYValue < 0.5) && <AboutSlide />}
       {(scrollYValue != null && scrollYValue > 0.475 && scrollYValue < 0.95) && <AskMeAnythingSlide />}
       {(scrollYValue != null && scrollYValue > 0.925) && <ContactSlide />}
+      <div className="fixed w-[40px] h-[40px] md:w-[60px] md:h-[60px] bottom-0 right-0 m-[20px] md:m-[50px] bg-[var(--theme-f)] flex items-center justify-center" style={{
+          borderRadius: "40px",
+          animation: scrollYValue != null && scrollYValue >= 0.95 ? "float-rotated 3s ease-in-out infinite" : "float 3s ease-in-out infinite"
+        }}>
+        <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 -960 960 960" width="28"><path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487z"/></svg>
+      </div>
     </div>
   );
 }
