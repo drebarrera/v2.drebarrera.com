@@ -15,7 +15,7 @@ const N_SLIDES = 4;
 
 function App() {
   const {screenHeight} = useScreen();
-  const {scrollYValue} = useScrollProgress();
+  const { scrollYValue, containerRef } = useScrollProgress();
 
   const location = useLocation();
 
@@ -24,7 +24,7 @@ function App() {
       window.location.replace(`https://docs.drebarrera.com${location.pathname}`);
     } else {
       setTimeout(() => {
-        window.scrollTo(0, 0);
+        //window.scrollTo(0, 0);
         console.log('window.scrollTo');
       }, 100)
     }
@@ -34,6 +34,7 @@ function App() {
     <div 
       className="w-screen flex flex-col items-center bg-[var(--theme-e)]"
       style={{ height: screenHeight * N_SLIDES }}
+      ref={ containerRef }
     >
       <Header />
       <BlobSlide />

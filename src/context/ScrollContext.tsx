@@ -7,12 +7,17 @@ const ScrollContext = createContext<ScrollContextType>({} as ScrollContextType);
 export function ScrollProvider({ children }: { children: ReactNode | null }) {
   const containerRef = useRef(null);
   const motionValue0 = useMotionValue(0);
+  const [isReady, setIsReady] = useState(false);
 
-  const { scrollYProgress } = containerRef.current ? 
-    useScroll({
+  useEffect(() => {
+    console.log('container Ref change', containerRef.current);
+    if (containerRef.current) setIsReady(true);
+  }, [containerRef.current]);
+
+  const { scrollYProgress } = useScroll({
       target: containerRef,
       offset: ["start start", "end end"]
-    }) : { scrollYProgress: motionValue0 };
+    });
 
   const [scrollYValue, setScrollYValue] = useState<number | null>(0);
 
