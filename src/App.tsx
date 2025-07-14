@@ -23,7 +23,9 @@ function App() {
     if (location.pathname !== '/') {
       window.location.replace(`https://docs.drebarrera.com${location.pathname}`);
     } else {
-      window.scrollTo(0, 0);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 100)
     }
   }, [location]);
 

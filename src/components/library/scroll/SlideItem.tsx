@@ -35,8 +35,12 @@ export default function SlideItem({
   const enter = start + enterDuration;
   const exit = end - exitDuration;
 
-  const opacity = useTransform(smoothYProgress, [start, enter, exit, end], [0, 1, 1, 0]);
-  const translateY = useTransform(smoothYProgress, [start, enter, exit, end], [50, 0, 0, -50]);
+  const opacity = (start <= 0) ? 
+    useTransform(smoothYProgress, [exit, end], [1, 0]) :
+    useTransform(smoothYProgress, [start, enter, exit, end], [0, 1, 1, 0]);
+  const translateY = (start <= 0) ? 
+    useTransform(smoothYProgress, [exit, end], [0, -50]) : 
+    useTransform(smoothYProgress, [start, enter, exit, end], [50, 0, 0, -50]);
 
   useEffect(() => {
     const unsubscribe = opacity.on("change", (latest) => {
