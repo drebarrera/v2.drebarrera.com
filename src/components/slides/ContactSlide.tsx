@@ -22,7 +22,7 @@ export default function ContactSlide() {
             style={{borderRadius: "20px"}}
           >
             <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 -960 960 960" width="28" fill="var(--theme-f)"><path d="M80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240zm160-320h320v-80H240zm0-120h480v-80H240zm0-120h480v-80H240z"/></svg>
-            Send a Message
+            Send Me a Message
           </a>
           <div className="w-full flex flex-row items-center shrink">
             <div className="w-full bg-[var(--theme-c)] h-[2px] shrink"/>
