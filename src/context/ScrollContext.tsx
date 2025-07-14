@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { useScroll, useSpring, useMotionValueEvent, useMotionValue } from "framer-motion";
+import { useScroll, useSpring, useMotionValueEvent } from "framer-motion";
 import type { ScrollContextType } from "./types";
 
 const ScrollContext = createContext<ScrollContextType>({} as ScrollContextType);
@@ -7,7 +7,7 @@ const ScrollContext = createContext<ScrollContextType>({} as ScrollContextType);
 export function ScrollProvider({ children }: { children: ReactNode | null }) {
   const containerRef = useRef(null);
   //const motionValue0 = useMotionValue(0);
-  //const [isReady, setIsReady] = useState(false);
+  const [_, setIsReady] = useState(false);
 
   useEffect(() => {
     console.log('container Ref change', containerRef.current);
