@@ -6,8 +6,8 @@ const ScrollContext = createContext<ScrollContextType>({} as ScrollContextType);
 
 export function ScrollProvider({ children }: { children: ReactNode | null }) {
   const containerRef = useRef(null);
-  const motionValue0 = useMotionValue(0);
-  const [isReady, setIsReady] = useState(false);
+  //const motionValue0 = useMotionValue(0);
+  //const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     console.log('container Ref change', containerRef.current);
