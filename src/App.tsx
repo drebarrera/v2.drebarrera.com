@@ -24,8 +24,7 @@ function App() {
       window.location.replace(`https://docs.drebarrera.com${location.pathname}`);
     } else {
       setTimeout(() => {
-        //window.scrollTo(0, 0);
-        console.log('window.scrollTo');
+        window.scrollTo(0, 0);
       }, 100)
     }
   }, [location]);
