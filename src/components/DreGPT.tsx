@@ -44,7 +44,7 @@ export default function DreGPT() {
         body: JSON.stringify({ prompt: input }),
       });
 
-      const body = await response.json();
+      //const body = await response.json();
       if (response.status != 200) {
         setGptResponse('DreGPT is currently down for maintenence. For more information about Andrés and his professional experience, please visit the below link.')
         //console.log(body);
