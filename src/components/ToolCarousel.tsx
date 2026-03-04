@@ -7,6 +7,7 @@ const TOOLS = [
   tools["Python"],
   tools["AWS"],
   tools["React"],
+  tools["HubSpot"],
   tools["Express"],
   tools["Next.js"],
   tools["Docker"],
